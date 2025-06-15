@@ -2,22 +2,22 @@
 #include <string>
 #include <vector>
 
-// Struct sederhana untuk model data Mahasiswa
-struct Mahasiswa {
+class Mahasiswa {
+public: 
     int id;
     std::string npm;
     std::string nama;
 };
 
-// Struct sederhana untuk model data Kelas
-struct Kelas {
+class Kelas {
+public: 
     int id;
     std::string kode_kelas;
     std::string nama_kelas;
 };
 
-// Struct untuk menampung hasil join data kehadiran
-struct AbsensiRecord {
+class AbsensiRecord {
+public: 
     std::string npm;
     std::string nama;
     std::string status;

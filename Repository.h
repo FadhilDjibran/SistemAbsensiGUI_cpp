@@ -16,4 +16,6 @@ public:
     bool simpanAbsensi(int kelas_id, const std::string& tanggal, const std::map<int, int>& statusKehadiran);
     std::vector<AbsensiRecord> ambilDataKehadiran(int kelas_id, const std::string& tanggal);
     bool tambahMahasiswa(const std::string& npm, const std::string& nama);
+    bool ubahMahasiswa(int id, const std::string& npm, const std::string& nama);
+    bool hapusMahasiswa(int id);
 };

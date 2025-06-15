@@ -2,33 +2,34 @@
 #include <fstream> // Untuk menulis file
 #include <vector>
 #include "Models.h"
+using namespace std;
 
 LaporanManager::LaporanManager(Repository& repo) : m_repo(repo) {}
 
-// Fungsi privat untuk mengubah data menjadi format string CSV
-std::string LaporanManager::formatKeCSV(const std::vector<AbsensiRecord>& data) {
-    std::string csv_content = "NPM,Nama Mahasiswa,Status Kehadiran\n"; // Header CSV
+// Mengubah data menjadi format string CSV
+string LaporanManager::formatKeCSV(const vector<AbsensiRecord>& data) {
+    string csv_content = "NPM,Nama Mahasiswa,Status Kehadiran\n"; // Header CSV
     for (const auto& record : data) {
         csv_content += record.npm + "," + record.nama + "," + record.status + "\n";
     }
     return csv_content;
 }
 
-bool LaporanManager::buatLaporanAbsensi(const std::string& nama_file, int kelas_id, const std::string& tanggal) {
-    // 1. Ambil data dari repository
-    std::vector<AbsensiRecord> data = m_repo.ambilDataKehadiran(kelas_id, tanggal);
+bool LaporanManager::buatLaporanAbsensi(const string& nama_file, int kelas_id, const string& tanggal) {
+    // Ambil data dari repository
+    vector<AbsensiRecord> data = m_repo.ambilDataKehadiran(kelas_id, tanggal);
 
     if (data.empty()) {
-        return false; // Tidak ada data untuk dilaporkan
+        return false; // Tidak ada data
     }
 
-    // 2. Format data ke CSV
-    std::string csv_data = formatKeCSV(data);
+    // Format data ke CSV
+    string csv_data = formatKeCSV(data);
 
-    // 3. Simpan ke file
-    std::ofstream file_output(nama_file);
+    // Simpan ke file
+    ofstream file_output(nama_file);
     if (!file_output.is_open()) {
-        return false; // Gagal membuka file
+        return false; 
     }
 
     file_output << csv_data;

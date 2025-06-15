@@ -14,18 +14,26 @@ private:
     MasterDataManager masterDataManager;
     LaporanManager laporanManager;
     
+    // Data state
     std::vector<Mahasiswa> daftar_mahasiswa;
     std::vector<Kelas> daftar_kelas;
     std::map<int, int> status_kehadiran;
     std::vector<AbsensiRecord> data_kehadiran_tersimpan;
-    void muatDataKehadiranTersimpan();
+
+    // State untuk Popups
+    bool m_show_popup_edit;
+    bool m_show_popup_hapus;
+    Mahasiswa m_mhs_dipilih; // Dipilih untuk diubah/hapus
 
     void init_gui();
     void shutdown_gui();
     void main_loop();
     void load_initial_data();
+    void muatDataKehadiranTersimpan();
     void simpan_data_absensi();
     void tambahMahasiswaBaru();
+    void ubahMahasiswaTerpilih();
+    void hapusMahasiswaTerpilih();
     void buatLaporanBaru();
 
 public:

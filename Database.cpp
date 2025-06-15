@@ -1,5 +1,5 @@
 #include "Database.h"
-#include <windows.h> // Untuk MessageBox
+#include <windows.h> 
 
 Database::Database() : conn(nullptr) {}
 
@@ -14,7 +14,6 @@ bool Database::connect(const char* host, const char* user, const char* pass, con
         return false;
     }
     if (mysql_real_connect(conn, host, user, pass, db_name, port, NULL, 0) == NULL) {
-        // Coba buat database jika koneksi awal gagal karena DB tidak ada
         conn = mysql_init(NULL);
         mysql_real_connect(conn, host, user, pass, NULL, port, NULL, 0);
         if(mysql_query(conn, "CREATE DATABASE IF NOT EXISTS db_absensi")) {

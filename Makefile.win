@@ -1,0 +1,67 @@
+# Project: SistemAbsensi
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o imgui/imgui.o imgui/imgui_draw.o imgui/imgui_impl_opengl3.o imgui/imgui_impl_win32.o imgui/imgui_tables.o imgui/imgui_widgets.o Database.o Repository.o DateUtil.o UIManager.o Aplikasi.o MasterDataManager.o LaporanManager.o
+LINKOBJ  = main.o imgui/imgui.o imgui/imgui_draw.o imgui/imgui_impl_opengl3.o imgui/imgui_impl_win32.o imgui/imgui_tables.o imgui/imgui_widgets.o Database.o Repository.o DateUtil.o UIManager.o Aplikasi.o MasterDataManager.o LaporanManager.o
+LIBS     = -L"D:/Dev-Cpp/TDM-GCC-64/lib" -L"D:/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -L"D:/Code/Sem4/Pemrograman Berbasis Objek/EAS/New/mysql-connector-c-6.1.11-winx64/lib" -L"D:/Code/Sem4/Pemrograman Berbasis Objek/EAS/Projek GUI Sistem Absensi C++/mysql-connector-c-6.1.11-winx64/lib" -mwindows -lmysql -lws2_32 -ldwmapi -lgdi32 -lopengl32 -limm32 -lole32 -luuid -lcomctl32
+INCS     = -I"D:/Dev-Cpp/TDM-GCC-64/include" -I"D:/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/Code/Sem4/Pemrograman Berbasis Objek/EAS/Projek GUI Sistem Absensi C++/mysql-connector-c-6.1.11-winx64/include"
+CXXINCS  = -I"D:/Dev-Cpp/TDM-GCC-64/include" -I"D:/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++" -I"D:/Code/Sem4/Pemrograman Berbasis Objek/EAS/Projek GUI Sistem Absensi C++/mysql-connector-c-6.1.11-winx64/include"
+BIN      = SistemAbsensi.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = D:\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+imgui/imgui.o: imgui/imgui.cpp
+	$(CPP) -c imgui/imgui.cpp -o imgui/imgui.o $(CXXFLAGS)
+
+imgui/imgui_draw.o: imgui/imgui_draw.cpp
+	$(CPP) -c imgui/imgui_draw.cpp -o imgui/imgui_draw.o $(CXXFLAGS)
+
+imgui/imgui_impl_opengl3.o: imgui/imgui_impl_opengl3.cpp
+	$(CPP) -c imgui/imgui_impl_opengl3.cpp -o imgui/imgui_impl_opengl3.o $(CXXFLAGS)
+
+imgui/imgui_impl_win32.o: imgui/imgui_impl_win32.cpp
+	$(CPP) -c imgui/imgui_impl_win32.cpp -o imgui/imgui_impl_win32.o $(CXXFLAGS)
+
+imgui/imgui_tables.o: imgui/imgui_tables.cpp
+	$(CPP) -c imgui/imgui_tables.cpp -o imgui/imgui_tables.o $(CXXFLAGS)
+
+imgui/imgui_widgets.o: imgui/imgui_widgets.cpp
+	$(CPP) -c imgui/imgui_widgets.cpp -o imgui/imgui_widgets.o $(CXXFLAGS)
+
+Database.o: Database.cpp
+	$(CPP) -c Database.cpp -o Database.o $(CXXFLAGS)
+
+Repository.o: Repository.cpp
+	$(CPP) -c Repository.cpp -o Repository.o $(CXXFLAGS)
+
+DateUtil.o: DateUtil.cpp
+	$(CPP) -c DateUtil.cpp -o DateUtil.o $(CXXFLAGS)
+
+UIManager.o: UIManager.cpp
+	$(CPP) -c UIManager.cpp -o UIManager.o $(CXXFLAGS)
+
+Aplikasi.o: Aplikasi.cpp
+	$(CPP) -c Aplikasi.cpp -o Aplikasi.o $(CXXFLAGS)
+
+MasterDataManager.o: MasterDataManager.cpp
+	$(CPP) -c MasterDataManager.cpp -o MasterDataManager.o $(CXXFLAGS)
+
+LaporanManager.o: LaporanManager.cpp
+	$(CPP) -c LaporanManager.cpp -o LaporanManager.o $(CXXFLAGS)
